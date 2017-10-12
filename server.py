@@ -2,42 +2,51 @@ import socket
 import thread
 import os
 import serial
+import sys
+
+## Initial fixed configurations
 
 HOST = ''
-PORTA = 7000
+PORT = 7000
 #PORTA_SERIAL = '/dev/ttyUSB1'
 BAUD_RATE = 9600
-
 #conSerial = serial.Serial(PORTA_SERIAL, BAUD_RATE)
 os.system("clear")
 
-
-def conecta(conexao, cliente):
-    print "IP conectado | Porta", cliente
+def connect(connection, client):
+    print "Connected IP | PORT", client
 
     while True:
-        dados = conexao.recv(1024)
-        if not dados: break
-        print "Cliente para Arduino: ", dados
-        #conSerial.write(dados)
-        #mensagem = conSerial.readline()
-    #print "Arduino Diz: ", mensagem
+        data = connection.recv(1024)
+        if not data: break
+        print "Client to Arduino: ", data
+        #conSerial.write(data)
+        #message = conSerial.readline()
+    print "Arduino says: "#, message
 
-    print 'Cliente encerrou conexao', cliente
-    print "Terminando..."
+    print "Client has terminated connection", client
+    print "Terminating..."
     #conSerial.close()
-    conexao.close()
+    connection.close()
     thread.exit()
-    #sys.exit()
+    sys.exit()
 
+def main():
+    tcpSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    connectionOrigin = (HOST, PORT)
+    tcpSocket.bind(connectionOrigin)
+    tcpSocket.listen(1)
 
-tcpSOCKET = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-conexaoORIGEM = (HOST, PORTA)
-tcpSOCKET.bind(conexaoORIGEM)
-tcpSOCKET.listen(1)
+    print "|====================================|"
+    print "| Server started: Waiting client     |"
+    print "|====================================|"
 
-while True:
-    conexao, cliente = tcpSOCKET.accept()
-    thread.start_new_thread(conecta, tuple([conexao, cliente]))
+    while True:
 
-tcpSOCKET.close()
+        connection, client = tcpSocket.accept()
+        thread.start_new_thread(connect, tuple([connection, client]))
+
+    tcpSocket.close()
+
+if __name__ == '__main__':
+    main()

@@ -1,23 +1,28 @@
 import socket
 import os
-import serial
+
+## Initial fixed configurations
 
 HOST = '127.0.0.1'
-PORTA = 7000
+PORT = 7000
 
-tcpSOCKET = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-destinoCONEXAO = (HOST, PORTA)
-tcpSOCKET.connect(destinoCONEXAO)
+def main():
+    tcpSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    connectionDestination = (HOST, PORT)
+    tcpSocket.connect(connectionDestination)
 
-os.system("clear")
-print "|====================================|"
-print "|    Arduino na rede usando Python   |"
-print "|====================================|"
-print "| Digite SAIR para teminar a conexao |"
+    os.system("clear")
+    print "|====================================|"
+    print "|        Connected to server         |"
+    print "|====================================|"
+    print "|   Type EXIT to close connection    |"
 
-dados = raw_input()
+    data = raw_input()
 
-while dados != 'SAIR':
-    tcpSOCKET.send(dados)
-    dados = raw_input()
-tcpSOCKET.close()
+    while data != 'EXIT':
+        tcpSocket.send(data)
+        data = raw_input()
+    tcpSocket.close()
+
+if __name__ == '__main__':
+    main()
