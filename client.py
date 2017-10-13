@@ -3,26 +3,26 @@ import os
 
 ## Initial fixed configurations
 
-HOST = '127.0.0.1'
-PORT = 7000
+class Client:
+    def __init__(self):
+        self.HOST = '127.0.0.1'
+        self.PORT = 7000
+        self.tcpSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.connectionDestination = (self.HOST, self.PORT)
 
-def main():
-    tcpSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    connectionDestination = (HOST, PORT)
-    tcpSocket.connect(connectionDestination)
+    def connect(self):
+        self.tcpSocket.connect(self.connectionDestination)
 
-    os.system("clear")
-    print "|====================================|"
-    print "|        Connected to server         |"
-    print "|====================================|"
-    print "|   Type EXIT to close connection    |"
+        os.system("clear")
+        #print "|====================================|"
+        #print "|        Connected to server         |"
+        #print "|====================================|"
+        #print "|   Type EXIT to close connection    |"
 
-    data = raw_input()
+        data = "button clicked"
 
-    while data != 'EXIT':
-        tcpSocket.send(data)
-        data = raw_input()
-    tcpSocket.close()
+        while True:
 
-if __name__ == '__main__':
-    main()
+
+        self.tcpSocket.sendall(data.encode('utf-8'))
+        tcpSocket.close()
