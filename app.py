@@ -7,14 +7,7 @@ app = Flask(__name__)
 
 @app.route('/test')
 def name():
-
-    variables = list()
-
-    variables.append("Ola marajulha")
-    variables.append("como vai")
-    variables.append("a matilda")
-
-    return render_template('index.html', variable=['46', '47', '48', '49'])
+    return render_template('index.html', variables=['46', '47', '48', '49'])
 
 @app.route('/')
 def index():

@@ -13,12 +13,6 @@ class Client:
 
     def connect(self):
         self.tcpSocket.connect(self.connectionDestination)
-
-        #os.system("clear")
         data = "button clicked"
-
-        while True:
-
-
         self.tcpSocket.sendall(data.encode('utf-8'))
-        tcpSocket.close()
+        self.tcpSocket.close()
