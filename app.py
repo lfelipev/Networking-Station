@@ -14,7 +14,7 @@ def name():
     variables.append("como vai")
     variables.append("a matilda")
 
-    return render_template('index.html', variable=variables)
+    return render_template('index.html', variable=['46', '47', '48', '49'])
 
 @app.route('/')
 def index():

@@ -2,6 +2,7 @@ import socket
 import os
 
 ## Initial fixed configurations
+# Essa classe realiza a conexao TCP com o servidor
 
 class Client:
     def __init__(self):
@@ -13,12 +14,7 @@ class Client:
     def connect(self):
         self.tcpSocket.connect(self.connectionDestination)
 
-        os.system("clear")
-        #print "|====================================|"
-        #print "|        Connected to server         |"
-        #print "|====================================|"
-        #print "|   Type EXIT to close connection    |"
-
+        #os.system("clear")
         data = "button clicked"
 
         while True:
