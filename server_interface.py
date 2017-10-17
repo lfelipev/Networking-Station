@@ -1,11 +1,12 @@
 from Tkinter import *
 from server import Server
 
-class Server:
+class Server_App:
     def __init__(self, master):
-        self.server = Server()
         frame = Frame(master)
         frame.pack()
+
+        self.server = Server()
 
         self.start_button = Button(frame,
                              text="Start",
@@ -25,7 +26,7 @@ class Server:
 def main():
     root = Tk()
     root.title("Wheather Station")
-    app = Server(root)
+    app = Server_App(root)
     root.mainloop()
 
 if __name__ == '__main__':

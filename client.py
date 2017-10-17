@@ -15,4 +15,11 @@ class Client:
         self.tcpSocket.connect(self.connectionDestination)
         data = "button clicked"
         self.tcpSocket.sendall(data.encode('utf-8'))
-        self.tcpSocket.close()
+        #self.tcpSocket.close()
+
+def main():
+    
+
+
+if __name__ == '__main__':
+    main()
