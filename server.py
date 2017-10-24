@@ -1,5 +1,6 @@
 import socket
 import thread
+import pickle
 import os
 #import serial
 import sys
@@ -17,6 +18,15 @@ class Server:
         self.tcpSocket.bind(self.connectionOrigin)
         self.tcpSocket.listen(1)
 
+    def getDataFromArduino(self):
+        temp = "temperatura"
+        humidity = "humidade"
+        rain = "chuva"
+        density = "densidade"
+        arduinoData = ([temp, humidity, rain, density])
+
+        return arduinoData
+
     def connect_loop(self):
         while True:
             connection, client = self.tcpSocket.accept()
@@ -24,12 +34,17 @@ class Server:
 
     def connect(self, connection):
         while True:
-            data = connection.recv(1024)
-            if not data: break
-            connection.sendall(data)
+            print 'Server is now listening to port 7000.'
+            dataReceive = connection.recv(1024)
+            print dataReceive
+            ##arduino function here
+            dataString = pickle.dumps(self.getDataFromArduino())
+            dataSend = dataString
+            if not dataReceive: break
+            connection.sendall(dataSend)
         connection.close()
         thread.exit()
-        sys.exit()
+        #sys.exit()
 
     def disconnect(self):
         return 1
