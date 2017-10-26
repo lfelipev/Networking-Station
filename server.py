@@ -33,8 +33,6 @@ class Server:
             thread.start_new_thread(self.connect(connection), tuple([connection, client]))
 
     def connect(self, connection):
-        counter = 0
-        counter2 = 0
         while True:
             print 'Server is now listening to port 7000.'
             dataReceive = connection.recv(1024)
@@ -42,12 +40,8 @@ class Server:
             ##arduino function here
             dataString = pickle.dumps(self.getDataFromArduino())
             dataSend = dataString
-            counter += 1
-            counter2 += 1
-            arr = ([str(counter), str(counter2)])
-            dataString = pickle.dumps(arr)
             if not dataReceive: break
-            connection.sendall(dataString)
+            connection.sendall(dataSend)
         connection.close()
         thread.exit()
         #sys.exit()
