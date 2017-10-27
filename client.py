@@ -14,7 +14,7 @@ class Client:
         self.connectionDestination = (self.HOST, self.PORT)
         self.tcpSocket.connect(self.connectionDestination)
 
-    def connect(self):
+    '''def connect(self):
         self.tcpSocket.connect(self.connectionDestination)
         data = "Client request!"
         #self.tcpSocket.close()
@@ -31,7 +31,7 @@ class Client:
             #print dataString[3]
 
 
-            time.sleep(5)
+            time.sleep(5)'''
 
     def getData(self):
         dataSend = "Client request!"
