@@ -10,7 +10,7 @@ class People(QObject):
 
     @pyqtProperty('QString')
     def name(self):
-        self._name = "end"
+        self._name = "VALOR"
         return self._name
 
     # Define the setter of the 'name' property.

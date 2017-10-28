@@ -3,19 +3,19 @@ import QtQuick 2.0
 ListModel {
 
     ListElement {
-        name: "Temperature"
+        name: "24ºC"
         icon: "pics/thermometer.png"
     }
     ListElement {
-        name: "Humidity"
+        name: "89%"
         icon: "pics/drop.png"
     }
     ListElement {
-        name: "Luminosity"
+        name: "94%"
         icon: "pics/contrast.png"
     }
     ListElement {
-        name: "Rain"
+        name: "24%"
         icon: "pics/cloud.png"
     }
 }
