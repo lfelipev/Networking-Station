@@ -4,8 +4,10 @@ import QtQuick.Layouts 1.3
 
 ApplicationWindow {
     visible: true
-    width: 360
-    height: 640
+    width: 288
+    height: 512
+    color: "#f8f7ff"
+
     title: qsTr("Weather Station")
 
     Timer {
@@ -20,9 +22,8 @@ ApplicationWindow {
         Item {
             width: grid.cellWidth; height: grid.cellHeight
             Rectangle {
-                color: "steelblue"
-                anchors.leftMargin: 60
-                anchors.rightMargin: 60
+                color: "#f8f7ff"
+                anchors.leftMargin: 10
                 anchors.fill: parent
                 Image {
                     id: pic
