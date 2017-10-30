@@ -32,12 +32,25 @@ class Display(QLCDNumber):
     def initUI(self):
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)
-
-        self.contentBlock()
+        self.createGridLayout()
+        #self.contentBlock()
+        windowLayout = QVBoxLayout()
+        windowLayout.addWidget(self.horizontalGroupBox)
+        self.setLayout(windowLayout)
 
         self.show()
 
+    def createGridLayout(self):
+        self.horizontalGroupBox = QGroupBox("Grid")
+        layout = QGridLayout()
+        layout.setColumnStretch(1, 4)
+        layout.setColumnStretch(2, 4)
+        l1 = QLabel(self)
+        l1.setPixmap(QPixmap('thermometer.png'))
 
+        layout.addWidget(l1, 0, 0)
+
+        self.horizontalGroupBox.setLayout(layout)
 
     def _update(self):
         dataStream = self.client.getData()
@@ -48,7 +61,7 @@ class Display(QLCDNumber):
 
 def main():
     app = QApplication([])
-    w = Display()
+    #w = Display()
     #w.show()
     #w.resize(300, 100)
 
