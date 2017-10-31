@@ -13,7 +13,7 @@ ApplicationWindow {
     Timer {
         id:timer
         interval: 1000; running: true; repeat: true
-        onTriggered: list.get(0).value += 1
+        onTriggered: time.text = felipe.name
         Component.onCompleted: timer.start()
     }
 
@@ -55,8 +55,7 @@ ApplicationWindow {
     }
 
     Text {
-      anchors.bottom : parent.bottom
-      text:felipe.name
+      id: time
     }
 }
 

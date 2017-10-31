@@ -6,11 +6,16 @@ from PyQt5.QtCore import pyqtProperty, QObject
 
 class People(QObject):
 
+    def __init__(self, parent  = None):
+        super(QObject, self).__init__(parent)
+        self.value = 0
+
     _name = "Felipe gatinho do Bio"
 
     @pyqtProperty('QString')
     def name(self):
-        self._name = "VALOR"
+        self.value += 2
+        self._name = str(self.value)
         return self._name
 
     # Define the setter of the 'name' property.
@@ -18,8 +23,7 @@ class People(QObject):
     def name(self, name):
         self._name = name
 
-    def __init__(self, parent  = None):
-        super(QObject, self).__init__(parent)
+
 
 
 app = QApplication(sys.argv)
