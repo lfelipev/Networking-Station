@@ -15,8 +15,7 @@ ApplicationWindow {
         interval: 1000; running: true; repeat: true
         onTriggered: time.text = felipe.name
         Component.onCompleted: timer.start()
-    }
-
+  }
     Component {
         id: dataDelegate
         Item {
@@ -42,21 +41,40 @@ ApplicationWindow {
         }
     }
 
+    ListModel {
+        id: dataModel
+
+        ListElement {
+            name: "25"
+            icon: "pics/thermometer.png"
+        }
+        ListElement {
+            name: "89%"
+            icon: "pics/drop.png"
+        }
+        ListElement {
+            name: "94%"
+            icon: "pics/contrast.png"
+        }
+        ListElement {
+            name: "24%"
+            icon: "pics/cloud.png"
+        }
+    }
+
     GridView {
         id: grid
         anchors.fill: parent
         cellWidth: 360; cellHeight: 100
         flow: GridView.FlowTopToBottom
 
-        model: DataModel {}
+        model: dataModel
         delegate: dataDelegate
         focus: true
 
     }
 
-    Text {
-      id: time
-    }
+
 }
 
 
