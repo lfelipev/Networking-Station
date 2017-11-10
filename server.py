@@ -34,9 +34,9 @@ class Server:
 
     def connect(self, connection):
         while True:
-            print 'Server is now listening to port 7000.'
+            print('Server is now listening to port 7000.')
             dataReceive = connection.recv(1024)
-            print dataReceive
+            print(dataReceive)
             ##arduino function here
             dataString = pickle.dumps(self.getDataFromArduino())
             dataSend = dataString
