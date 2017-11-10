@@ -12,7 +12,7 @@ ApplicationWindow {
 
     title: qsTr("Weather Station")
 
-    function updateData() {
+    function updateStatus() {
         data = status.getData
         temperature.text = status.temperature
         humidity.text = status.humidity
@@ -24,7 +24,7 @@ ApplicationWindow {
     Timer {
         id:timer
         interval: 1000; running: true; repeat: true
-        onTriggered: updateData()
+        onTriggered: updateStatus()
         Component.onCompleted: timer.start()
     }
 
@@ -110,8 +110,6 @@ ApplicationWindow {
         id: density
         topPadding: 50
     }
-
-
 }
 
 

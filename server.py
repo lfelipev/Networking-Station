@@ -2,25 +2,28 @@ import socket
 import thread
 import pickle
 import os
-#import serial
+import serial
 import sys
 
 class Server:
     def __init__(self):
         self.HOST = ''
         self.PORT = 7000
-        #self.SERIAL_PORT = '/dev/ttyUSB0'
-        #self.BAUD_RATE = 9600
-        #self.conSerial = serial.Serial(self.SERIAL_PORT, self.BAUD_RATE)
-        #self.tcpSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.SERIAL_PORT = '/dev/ttyACM0'
+        self.BAUD_RATE = 9600
+        self.conSerial = serial.Serial(self.SERIAL_PORT, self.BAUD_RATE)
+        self.tcpSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.connectionOrigin = (self.HOST, self.PORT)
         self.tcpSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.tcpSocket.bind(self.connectionOrigin)
         self.tcpSocket.listen(1)
 
     def getDataFromArduino(self):
-        temp = "24"
-        humidity = "89"
+        stringStream = self.conSerial.readline()
+        stringSplit = stringStream.split(':')
+
+        temp = stringSplit[1]
+        humidity = stringSplit[2]
         luminosity = "97"
         rain = "YES"
         density = "30"
