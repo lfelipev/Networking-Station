@@ -19,11 +19,12 @@ class Server:
         self.tcpSocket.listen(1)
 
     def getDataFromArduino(self):
-        temp = "temperatura"
-        humidity = "humidade"
-        rain = "chuva"
-        density = "densidade"
-        arduinoData = ([temp, humidity, rain, density])
+        temp = "24"
+        humidity = "89"
+        luminosity = "97"
+        rain = "YES"
+        density = "30"
+        arduinoData = ([temp, humidity, luminosity, rain, density])
 
         return arduinoData
 
@@ -37,7 +38,6 @@ class Server:
             print('Server is now listening to port 7000.')
             dataReceive = connection.recv(1024)
             print(dataReceive)
-            ##arduino function here
             dataString = pickle.dumps(self.getDataFromArduino())
             dataSend = dataString
             if not dataReceive: break

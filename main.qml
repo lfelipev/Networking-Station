@@ -8,14 +8,26 @@ ApplicationWindow {
     height: 512
     color: "#f8f7ff"
 
+    property var data
+
     title: qsTr("Weather Station")
+
+    function updateData() {
+        data = status.getData
+        temperature.text = status.temperature
+        humidity.text = status.humidity
+        luminosity.text = status.luminosity
+        rain.text = status.rain
+        density.text = status.density
+    }
 
     Timer {
         id:timer
         interval: 1000; running: true; repeat: true
-        onTriggered: time.text = felipe.name
+        onTriggered: updateData()
         Component.onCompleted: timer.start()
-  }
+    }
+
     Component {
         id: dataDelegate
         Item {
@@ -72,6 +84,31 @@ ApplicationWindow {
         delegate: dataDelegate
         focus: true
 
+    }
+
+    Text {
+        id: temperature
+        topPadding: 10
+    }
+
+    Text {
+        id: humidity
+        topPadding: 20
+    }
+
+    Text {
+        id: luminosity
+        topPadding: 30
+    }
+
+    Text {
+        id: rain
+        topPadding: 40
+    }
+
+    Text {
+        id: density
+        topPadding: 50
     }
 
 
