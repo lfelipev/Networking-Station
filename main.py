@@ -1,5 +1,5 @@
 import sys
-import os
+
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtQml import QQmlApplicationEngine, QQmlContext
 from PyQt5.QtCore import pyqtProperty, QObject
@@ -15,37 +15,37 @@ class Status(QObject):
         self.rain = 'Initializing...'
         self.density = 'Initializing...'
         self.client = Client()
-        self.dataString = self.client.getData()
+        self.dataList = self.client.getData()
 
     @pyqtProperty('QString')
     def getData(self):
         constant = 'Requesting server data!'
-        self.dataString = self.client.getData()
+        self.dataList = self.client.getData()
         return constant
 
     @pyqtProperty('QString')
     def temperature(self):
-        self.temperature = self.dataString[0]
+        self.temperature = self.dataList[0]
         return self._temperature
 
     @pyqtProperty('QString')
     def humidity(self):
-        self.humidity = self.dataString[1]
+        self.humidity = self.dataList[1]
         return self._humidity
 
     @pyqtProperty('QString')
     def luminosity(self):
-        self.luminosity = self.dataString[2]
+        self.luminosity = self.dataList[2]
         return self._luminosity
 
     @pyqtProperty('QString')
     def rain(self):
-        self.rain = self.dataString[3]
+        self.rain = self.dataList[3]
         return self._rain
 
     @pyqtProperty('QString')
     def density(self):
-        self.density = self.dataString[4]
+        self.density = self.dataList[4]
         return self._density
 
 

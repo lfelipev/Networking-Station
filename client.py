@@ -14,25 +14,6 @@ class Client:
         self.connectionDestination = (self.HOST, self.PORT)
         self.tcpSocket.connect(self.connectionDestination)
 
-    '''def connect(self):
-        self.tcpSocket.connect(self.connectionDestination)
-        data = "Client request!"
-        #self.tcpSocket.close()
-
-        while True:
-            self.tcpSocket.sendall(data.encode('utf-8'))
-            dataReceive = self.tcpSocket.recv(1024)
-
-            dataString = pickle.loads(dataReceive)
-            #print 'Received', repr(dataString)
-            #print dataString[0]
-            #print dataString[1]
-            #print dataString[2]
-            #print dataString[3]
-
-
-            time.sleep(5)'''
-
     def getData(self):
         dataSend = "Client request!"
         self.tcpSocket.sendall(dataSend.encode('utf-8'))

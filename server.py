@@ -22,11 +22,11 @@ class Server:
         stringStream = self.conSerial.readline()
         stringSplit = stringStream.split(':')
 
-        temp = stringSplit[1]
-        humidity = stringSplit[2]
-        luminosity = "97"
-        rain = "YES"
-        density = "30"
+        temp = stringSplit[0]
+        humidity = stringSplit[1]
+        luminosity = stringSplit[2]
+        rain = stringSplit[3]
+        density = stringSplit[4]
         arduinoData = ([temp, humidity, luminosity, rain, density])
 
         return arduinoData

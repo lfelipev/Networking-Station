@@ -9,16 +9,21 @@ ApplicationWindow {
     color: "#f8f7ff"
 
     property var data
+    property var temp
+    property var humd
+    property var lum
+    property var rainD
+    property var dens
 
     title: qsTr("Weather Station")
 
     function updateStatus() {
         data = status.getData
-        temperature.text = status.temperature
-        humidity.text = status.humidity
-        luminosity.text = status.luminosity
-        rain.text = status.rain
-        density.text = status.density
+        temp = status.temperature
+        humd = status.humidity
+        lum = status.luminosity
+        rainD = status.rain
+        dens = status.density
     }
 
     Timer {
@@ -57,11 +62,11 @@ ApplicationWindow {
         id: dataModel
 
         ListElement {
-            name: "25"
+            name: temp
             icon: "pics/thermometer.png"
         }
         ListElement {
-            name: "89%"
+            name: humd
             icon: "pics/drop.png"
         }
         ListElement {
