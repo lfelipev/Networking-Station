@@ -24,13 +24,10 @@ ApplicationWindow {
         lum = status.luminosity
         rainD = status.rain
         dens = status.density
-        dataModel.setProperty(0, "name", temp)
-
-        if(1) {
-            dataModel.setProperty(0, "icon", "pics/drop.png")
-        }
-
-
+        dataModel.setProperty(0, "name", temp + "ºC")
+        dataModel.setProperty(1, "name", humd + "%")
+        dataModel.setProperty(2, "name", lum)
+        dataModel.setProperty(3, "name", rainD)
     }
 
     Timer {
@@ -82,7 +79,7 @@ ApplicationWindow {
         }
         ListElement {
             name: "..."
-            icon: "pics/cloud.png"
+            icon: "pics/no-rain.png"
         }
     }
 

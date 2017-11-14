@@ -18,15 +18,28 @@ class Server:
         self.tcpSocket.bind(self.connectionOrigin)
         self.tcpSocket.listen(1)
 
+        ## No arduino variables
+        self.temp = 0
+        self.humidity = 100
+        self.luminosity = 0
+        self.rain = "YES"
+        self.density = 1023
+
     def getDataFromArduino(self):
         #stringStream = self.conSerial.readline()
         #stringSplit = stringStream.split(':')
 
-        temp = "32"
-        humidity = "92"
-        luminosity = "101"
-        rain = "YES"
-        density = "23"
+        self.temp += 1
+        self.humidity -= 1
+        self.luminosity += 1
+        self.rain = "No rain"
+        self.density -= 1
+
+        temp = str(self.temp)
+        humidity = str(self.humidity)
+        luminosity = str(self.luminosity)
+        rain = str(self.rain)
+        density = str(self.density)
         arduinoData = ([temp, humidity, luminosity, rain, density])
 
         return arduinoData
