@@ -24,6 +24,13 @@ ApplicationWindow {
         lum = status.luminosity
         rainD = status.rain
         dens = status.density
+        dataModel.setProperty(0, "name", temp)
+
+        if(1) {
+            dataModel.setProperty(0, "icon", "pics/drop.png")
+        }
+
+
     }
 
     Timer {
@@ -62,19 +69,19 @@ ApplicationWindow {
         id: dataModel
 
         ListElement {
-            name: temp
+            name: "..."
             icon: "pics/thermometer.png"
         }
         ListElement {
-            name: humd
+            name: "..."
             icon: "pics/drop.png"
         }
         ListElement {
-            name: "94%"
+            name: "..."
             icon: "pics/contrast.png"
         }
         ListElement {
-            name: "24%"
+            name: "..."
             icon: "pics/cloud.png"
         }
     }
@@ -88,7 +95,6 @@ ApplicationWindow {
         model: dataModel
         delegate: dataDelegate
         focus: true
-
     }
 
     Text {
@@ -116,5 +122,3 @@ ApplicationWindow {
         topPadding: 50
     }
 }
-
-
