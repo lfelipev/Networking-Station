@@ -25,6 +25,12 @@ ApplicationWindow {
         rainD = status.rain
         dens = status.density
         dataModel.setProperty(0, "name", temp)
+
+        if(1) {
+            dataModel.setProperty(0, "icon", "pics/drop.png")
+        }
+
+
     }
 
     Timer {
