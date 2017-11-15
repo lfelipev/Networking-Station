@@ -14,6 +14,7 @@ class Status(QObject):
         self.luminosity = 'Initializing...'
         self.rain = 'Initializing...'
         self.density = 'Initializing...'
+        self.luminosityIcon = ''
         self.client = Client()
         self.dataList = self.client.getData()
 
@@ -48,6 +49,10 @@ class Status(QObject):
         self.density = self.dataList[4]
         return self._density
 
+    @pyqtProperty('QString')
+    def luminosityIcon(self):
+        self.luminosityIcon = 'pics/drop-flat.png'
+        return self._luminosityIcon
 
     # Define the setter of the '' property.
     @temperature.setter
@@ -69,6 +74,10 @@ class Status(QObject):
     @density.setter
     def density(self, density):
         self._density = density
+
+    @luminosityIcon.setter
+    def luminosityIcon(self, luminosityIcon):
+        self._luminosityIcon = luminosityIcon
 
 def main():
     app = QApplication(sys.argv)

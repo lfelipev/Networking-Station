@@ -4,8 +4,10 @@ import QtQuick.Layouts 1.3
 
 ApplicationWindow {
     visible: true
-    width: 288
-    height: 512
+    minimumWidth: 288
+    minimumHeight: 512
+    maximumWidth: 288
+    maximumHeight: 512
     color: "#f8f7ff"
 
     property var data
@@ -24,10 +26,39 @@ ApplicationWindow {
         lum = status.luminosity
         rainD = status.rain
         dens = status.density
+
         dataModel.setProperty(0, "name", temp + "ºC")
         dataModel.setProperty(1, "name", humd + "%")
         dataModel.setProperty(2, "name", lum)
-        dataModel.setProperty(3, "name", rainD)
+
+        if(lum < 10) {
+            dataModel.setProperty(2, "icon", "pics/dark.png")
+        }
+        else if (lum > 10 && lum < 200) {
+            dataModel.setProperty(2, "icon", "pics/dim-light.png")
+        }
+        else if (lum > 200 && lum < 500) {
+            dataModel.setProperty(2, "icon", "pics/medium-light.png")
+        }
+        else if (lum > 500 && lum < 800) {
+            dataModel.setProperty(2, "icon", "pics/light.png")
+        }
+        else if (lum > 800) {
+            dataModel.setProperty(2, "icon", "pics/very-light.png")
+        }
+
+        if(dens > 900 && dens < 1024) {
+            dataModel.setProperty(3, "name", "No rain")
+            dataModel.setProperty(3, "icon", "pics/no-rain.png")
+        }
+        else if(dens > 400 && dens < 900) {
+            dataModel.setProperty(3, "name", "Rainy")
+            dataModel.setProperty(3, "icon", "pics/rain.png")
+        }
+        else if(dens > 0 && dens < 400) {
+            dataModel.setProperty(3, "name", "Heavy Rain")
+            dataModel.setProperty(3, "icon", "pics/storm.png")
+        }
     }
 
     Timer {
@@ -43,7 +74,7 @@ ApplicationWindow {
             width: grid.cellWidth; height: grid.cellHeight
             Rectangle {
                 color: "#f8f7ff"
-                anchors.leftMargin: 10
+                anchors.leftMargin: 30
                 anchors.fill: parent
                 Image {
                     id: pic
@@ -75,7 +106,7 @@ ApplicationWindow {
         }
         ListElement {
             name: "..."
-            icon: "pics/contrast.png"
+            icon: "pics/dark.png"
         }
         ListElement {
             name: "..."
@@ -92,31 +123,6 @@ ApplicationWindow {
         model: dataModel
         delegate: dataDelegate
         focus: true
-    }
-
-    Text {
-        id: temperature
-        topPadding: 10
-    }
-
-    Text {
-        id: humidity
-        topPadding: 20
-    }
-
-    Text {
-        id: luminosity
-        topPadding: 30
-    }
-
-    Text {
-        id: rain
-        topPadding: 40
-    }
-
-    Text {
-        id: density
-        topPadding: 50
     }
 }
 

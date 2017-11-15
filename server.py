@@ -29,6 +29,8 @@ class Server:
         #stringStream = self.conSerial.readline()
         #stringSplit = stringStream.split(':')
 
+        # No arduino logic
+
         self.temp += 1
         self.humidity -= 1
         self.luminosity += 1
