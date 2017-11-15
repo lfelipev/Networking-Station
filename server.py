@@ -33,6 +33,7 @@ class Server:
 
     def connect_loop(self):
         while True:
+            print("Server started!")
             connection, client = self.tcpSocket.accept()
             thread.start_new_thread(self.connect(connection), tuple([connection, client]))
 
