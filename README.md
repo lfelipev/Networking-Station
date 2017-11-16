@@ -4,7 +4,8 @@
 
 O objetivo desse projeto é criar um cliente que recebe informações de um arduino através de um servidor.
 
-## Instalação (build)
+
+## Instalação
 
 [Instalação PyQt5](http://pyqt.sourceforge.net/Docs/PyQt5/installation.html)
 
@@ -14,10 +15,11 @@ O objetivo desse projeto é criar um cliente que recebe informações de um ardu
 
 ## Execução
 
+[Versão sem Arduino](https://github.com/lfelipev/Networking-Station/tree/no-arduino)
+
 O servidor deve ser executado antes de rodar a aplicação por inteiro: ```python server.py```
 
 Em seguida a aplicação pode ser executada: ```python3 main.py```
-
 
 ## Estrutura
 
