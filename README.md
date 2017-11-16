@@ -4,7 +4,20 @@
 
 O objetivo desse projeto é criar um cliente que recebe informações de um arduino através de um servidor.
 
-## Instalação
+## Instalação (build)
+
+[Instalação PyQt5](http://pyqt.sourceforge.net/Docs/PyQt5/installation.html)
+
+[Instalação pySerial](http://pyserial.readthedocs.io/en/latest/pyserial.html)
+
+[Instalação Arduino Library DHT-sensor](https://github.com/adafruit/DHT-sensor-library)
+
+## Execução
+
+O servidor deve ser executado antes de rodar a aplicação por inteiro: ```python server.py```
+
+Em seguida a aplicação pode ser executada: ```python3 main.py```
+
 
 ## Estrutura
 
