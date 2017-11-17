@@ -15,7 +15,7 @@ O objetivo desse projeto é criar um cliente que recebe informações de um ardu
 
 ## Execução
 
-[Versão sem Arduino](https://github.com/lfelipev/Networking-Station/tree/no-arduino)
+[Versão pra testar sem Arduino](https://github.com/lfelipev/Networking-Station/tree/no-arduino)
 
 O servidor deve ser executado antes de rodar a aplicação por inteiro: ```python server.py```
 
